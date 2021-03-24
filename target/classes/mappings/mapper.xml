@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+<!-- 로그인 -->
+<select id="login" parameterType="mvo" resultType="mvo">
+	select * from member where id = #{id} and pw=#{pw}
+</select>
+<select id="search" parameterType="Map" resultType="mvo">
+	select id from member where email= #{email} and name= #{name}
+</select>
+<insert id="sign" parameterType="mvo">
+	insert into member values(members_seq.nextval,#{id},#{pw},#{name},#{email},sysdate,0)
+</insert>
+<select id="sameid" parameterType="String" resultType="mvo">
+	select id from member where id=#{id}
+</select>
+</mapper>
